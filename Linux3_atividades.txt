@@ -1,0 +1,62 @@
+#Challenge 1
+
+1.Using tar, create an archive of /etc in the current directory
+	- sudo tar -cvf etc.tar /etc/
+
+2. Display the contents of the archive searching for a specific file in the archive.
+	- tar -tvf etc.tar | grep ssh
+	- tar -tvf etc.tar | grep passwd
+
+3.Extract the archive in the current directory.
+	- tar -xvf etc.tar
+
+
+# Challenge 2
+
+1. Using tar, create a compressed archive of /etc using gzip in the current directory.
+	- sudo tar -czvf etc.tar.gz /etc/
+
+2.Display the contents of the archive searching for a specific file in the archive.
+	- tar -tzvf etc.tar.gz | grep ssh
+	- tar -tzvf etc.tar.gz | grep group
+
+3.Extract the archive in another directory.
+	- tar -C /extra/ -xzvf etc.tar.gz
+
+
+# Challenge 3
+
+1.Create a file using a command redirection and a directory.
+	- ipd addr > ip.txt
+	- mkdir mydir
+
+2.Create 2 hard links to the file. Check the no. of hard links.
+	- ln ip.txt i.txt
+	- ln ip.txt  mydir/ip.txt
+	- ls -l . mydir/
+
+3.Create a symlink to the initial file. Check the symlink.
+	- ln -s ip.txt ips.txt
+	- ls -l
+
+4.Delete the initial file and see what happens with the other 2 hard links and with the symlink.
+	- rm ip.txt
+	- cat ips.txt (error)
+	- ls -l i.txt
+	- cat i.txt
+
+
+# Challenge 4
+
+1.Create a symlink to the Desktop directory in another directory.
+	-ln -s ~/Desktop/ mydir/disk
+
+2.Create a hard link to the Desktop directory in another directory.
+	-ln ~/Desktop/ mydir/disk
+	- error 'hard link not allowed for directory'
+
+
+
+
+
+

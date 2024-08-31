@@ -1,0 +1,63 @@
+#Challenge 1
+
+1.Download the Google Earth package (.deb) for Ubuntu from this address:
+
+Install the app using the locally downloaded .deb file and dpkg
+Start the application.
+	- sudo dpkg -i google-earth-pro-stable_courrent
+
+
+Challenge 2
+
+1.Remove the Google Earth application using dpkg
+	- sudo dpkg -P google-earth-pro-stable_courrent
+
+2.Install Google Earth again using apt and the deb file.
+	- sudo apt install ./google-earth-pro-stable_caourrent
+
+Challenge 3
+
+1.Display all installed applications using dpkg
+	- dpkg-query -l
+	- dpkg --get-selections
+
+2.Take any Linux command and check to which package it belongs.
+	- which - ls
+
+3.List all other files from that package
+	- dpks -S /bin/ls
+	- dpks -L coreutils
+
+Challenge 4
+
+1.Install the nginx web server using apt.
+	- sudo apt install nginx
+
+2.Start and check the service by connecting to localhost using the browser.
+	- systemctl status nginx
+
+3.Remove the web server.
+	- sudo apt purge nginx
+
+
+#Challenge 5
+
+1.Search for a package named squid in the official repositories and display information about it.
+	- apt list | grep squid
+
+
+#Challenge 6
+
+1.List all upgradable applications.
+	- apt list upgradable
+	- 
+
+2.Upgrade all applications assuming yes to each prompt.
+	- sudo apt upgrade
+	- sudo apt full-upgrade y
+
+
+
+
+
+

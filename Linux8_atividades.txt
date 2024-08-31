@@ -1,0 +1,75 @@
+#Challenge 1
+
+1. List the IP address, the Default Gateway, the Mac Address and the DNS Servers.
+   Use both ifconfig and ip commands.
+	- ifconfig     'Mac address'
+	- ip a show
+
+	- route -n     'Getway'
+	- ip route show
+
+	- systemd-resolve --status    'DNS'
+
+
+
+#Challenge 2
+
+1. Using ifconfig, disable the Ethernet interface.
+	- sudo ifconfig enp0s3 down
+
+2. Using ip, enable the Ethernet interface.
+	- sudo ip link set enp0s3 up
+
+3. Check its status both with ifconfig and ip.
+	- ifconfig -a
+	- ip a show
+	- ip link show dev enp0s3
+
+
+#Challenge 3
+
+1.Set a new temporary IP address using both ip and  ifconfig.
+	- sudo ip address del 192.168.1.83/24 dev enp0s3
+	- sudo ip address add 192.168.1.83/24 dev enp0s3
+	- ifconfig enp0s3 192.168.1.83/24 down
+	- ifconfig enp0s3 192.168.1.83/24 up
+
+
+Challenge 4
+
+1.Using ifconfig, set a secondary IP address on the Ethernet interface.
+	- sudo ifconfig enp0s3:10 10.0.0.10/24 up
+
+
+#Challenge 5
+
+1.Change the MAC address to a random one.
+	- ifconfig    'copiar ether'
+	- sudo ifconfig enp0s3 down
+	- sudo ifconfig enp0s3 hw ether 08:00:27:d1:20:c0
+	- sudo ifconfig enp0s3 up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

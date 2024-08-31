@@ -1,0 +1,156 @@
+#Challenge 1
+
+1.Using the docker client, display the help of the docker management command container and the help of the run subcommand.
+
+	- docker container help
+	- docker container run --help
+
+
+#Challenge 2
+
+1.Using the Docker CLI search on Docker Hub for an image called mariadb 
+
+	- docker search mariadb
+
+
+#Challenge 3
+
+1.Using the docker client pull the image called alpine with the edge tag. 
+  List all images downloaded locally.
+
+	- docker pull alpine:edge
+
+
+#Challenge 4
+
+1.Launch a container from the alpine:edge image. Get shell access to the container.
+	- docker run -it alpine:edge /bin/sh
+
+2.Create a new file called a.txt in the /root directory of the container
+	- cd root
+	- touch a.txt
+
+3.Exit the container without stopping it
+	- ctrl + p + q
+
+4. Check that the container is still running
+	- docker ps
+
+5.Attach to the container by running the sh command in the container
+	- docker exec -it my_contairner /bin/sh
+
+6.Check that the file (a.txt) still exists
+	- ls root/
+
+7.Exit the container by running exit
+	- exit
+
+
+#Challenge 5
+
+1.Run the Nginx web server in Docker container, in the background, and publish port 80
+	- docker container run -d -p 80:80 nginx
+
+2.Connect to the server from another machine using a browser
+	- ip address     'pegar ip e porta e testar no navegado'
+
+3.Check the web server logs
+	- docker container logs 'id container'
+
+4.Attach to the container in which nginx is running
+	- dokcer container exec -it 'id container' bash
+
+
+#Challenge 6
+
+1.Run two Nginx and two Apache containers that publish random ports
+	- docker container -d -P nginx
+	- docker container -d -P httpd
+
+2.Connect to the web servers from another machine using a browser
+	- - ip address     'pegar ip e porta e testar no navegado'
+
+3.Stop the containers
+	- docker container stop 'id container'
+
+4.Remove all stopped containers
+	- docker container rm $(docker ps -a -f status=exited -q)
+
+
+#Challenge 7
+
+1.Run ubuntu:latest in a container and attach to it (get shell access)
+	- docker run -it ubuntu:latest bash
+
+2.Install the OpenSSH server in the container (apt update && apt install ssh), add a user, and set its password
+	- apt ssh update && apt install ssh
+	- useradd -s /bin/bash luffy
+	- service ssh start         'or status to see'
+
+3.Exit the container without stopping it (Ctrl P + Q)
+	- ctrl p + q
+
+4.Check the IP address of the container and connect to it using SSH and the user you’ve just created
+	- docker container inspect "id container" | grep -i ipaddress
+	- ssh -l luffy 172.17.0.4
+
+
+#Challenge 8
+
+1.Consider the previous challenge when you’ve installed the OpenSSH server in a Ubuntu docker container
+	- docker container stop 'id container'
+	- "copiar o id"
+
+2.Commit the changes to a new image named myubuntu with the tag custom
+	- docker commit -m "OpenSSh istalled" -a "MicaelB" 'id conainer' bakugou01/myubunto:custon
+
+3.Start a container from this new image and check that the ssh daemon is installed and is running
+	- docker container run -it bakugou01/myubuntu:custon
+	- servece ssh status
+
+4.Push the image to Docker Hub
+	- docker image push bakugou01/myubutu:custon
+
+
+#Challenge 9
+
+1.Go to Docker Hub and search for Apache
+
+2.Go to the Dockerfile of the image with the latest tag
+
+3.Copy the Dockerfile locally and build a custom image from that file
+  Note: You’ll need a file called httpd-foreground as well. The file is available in the GitHub repository, where the Dockerfile resides
+	- wget 'link raw'
+	- chmod +x httpd-foreground
+	- docker image build -t my_httpd:1.0 .
+	- docker container run -d -P my_httpd:1.0
+
+#Challenge 10
+
+1.Create a volume named webapp1
+	- docker volume create webapp1
+
+2.Inspect the volume
+	- docker volume inspect webapp1
+
+3.Copy a few files in the volume’s directory
+	- who -a > /var/lib/docker/volumes/webapp1/_data
+
+4.Start the Apache web server (httpd image)  in a docker container with the volume mounted in its DirectoryRoot (/usr/local/apache2/htdocs)
+	- docker container run -d --name mywebapp1 -p 80:80 -v /var/lib/docker/volumes/webapp1/_data httpd
+
+5.Access the files in the volume with a browser 
+	- ip address       'and try on browser'
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,153 @@
+Challenge 1
+
+1.Consider the following variable:  friends="Anne John Jenna Arena Paul Dan"
+  Create a script that uses a simple for loop and says Hello to each friend in the list.
+
+	- #!/bin/bash
+	  tropa="luffy zoro sandy chopper ussop brok"
+	  for per in $tropa
+	  do
+		echo "Hello $per"
+	  done
+
+
+2.Create a script that prompts the user for a file. Test that it’s a file.
+ Prompt the user for 2 positive integers n and m.
+ Display the lines (from line number n to m, both inclusive) of the text file.
+
+	- #!/bin/bash
+	  read -p "Enter with a file name: " iffile
+	  read -p "Fist line: " fl
+	  read -p "Last line: " ll
+	  if [[ -f $itfile ]]
+	  then
+		for (( i=$fl; i<=$ll; i++))
+		do
+			sed -n "${i}p" "$itfile"
+		done
+	  else
+	  	echo" It isn't a file"
+	  fi
+
+
+Challenge 3
+
+1.Create a script that displays odd numbers between 1 and 50.
+
+	-#!/bin/bash
+	  i=1
+	  while [[ $i -lt 50 ]]
+	  do
+		echo $i
+		let i=i+2
+	  done
+
+Challenge 4
+
+1.Develop a script that will create 5 text files in the current directory.
+	- #!/bin/bash
+	  for i in {1..5..1}; do
+	  	touch file_n$i.txt
+		echo "Creating file$i.."
+	  done
+	  echo "Done."
+
+
+Challenge 5
+
+1.Develop a script that prompts the user for a number n and then creates n text files in the current directory.
+
+	- #!/bin/bash
+	  read -p "How many files: " num
+	  num2=1
+	  for (( i=$num2; i<=$num; i++))
+	  do
+		touch file_n$i.txt
+		echo "$i were created"
+	  done
+
+
+Challlenge 6
+
+1.Consider the solution from the previous challenge. 
+  Add a testing condition so that the user enters a positive integer less than 100.
+
+	- #!/bin/bash
+	  read -p "Enter the number of files to create:" n
+ 	  if [[ $n -le 0 ]] || [[ $n -ge 100 ]] 	# || is the logical OR operator
+  	  then
+		echo "You entered $n. Enter a positive integer less than 100."
+		exit 
+	  fi
+	  i=0
+	  while [[ $i -lt $n ]]
+	  do
+		touch "$i.txt"
+		((i++))
+	  done
+	  echo "$n files were created!"
+
+
+
+Challenge 7
+
+1.Consider the solution from the previous challenge. 
+  Change the script so that it creates a file every 3 seconds and the name of each file will be current_minute_second
+
+	- #!/bin/bash
+
+	  read -p "Enter the number of files to create:" n
+ 	  if [[ $n -le 0 ]] || [[ $n -ge 100 ]] 	# || is the logical OR operator
+	  then
+		echo "You entered $n. Enter a positive integer less than 100."
+		exit 
+	  fi
+
+	  i=0
+	  while [[ $i -lt $n ]]
+	  do
+		minute_second="$(date +%M%S)"
+		echo "Creating $minute_second"
+	 	touch "$minute_second"
+		((i++))
+		sleep 3
+	  done
+	  echo "$n files were created!"
+
+
+Challege 8
+
+1. Create a script that takes some IP addresses as arguments and sends one ping packet to each ip address.
+2. so that the script reads the IP addresses from a text file that is given by the user.
+
+	- #!/bin/bash
+	  read -p "Enter with the file: " fname
+	  if [[ -f $fname ]]
+	  then
+		for i in $(cat $fname)
+	  	do
+			pinc -c 1 $i
+		echo "##########"
+	  	done
+	  else
+		echo "Enter with a file"
+	  fi
+
+
+
+Challenge 9
+
+1.Create a script that takes 3 arguments: a file extension, a source directory, and a destination directory given as absolute or
+  relative paths to the script. The script will copy all the files with that extension from the source directory to the destination directory.
+
+	- #!/bin/bash
+	  read -p "file extention (without .): "
+	  read -p "source directory: "
+	  read -p "destination directory: "
+	  
+	  for file in $pth/*.$expt
+	  do
+		echo "Copying $file to $backs"
+		sleep 1
+		cp $file $backs
+	  done

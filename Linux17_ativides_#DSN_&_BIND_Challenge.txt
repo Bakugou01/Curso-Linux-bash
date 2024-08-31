@@ -1,0 +1,78 @@
+#DSN & BIND Challenge
+-------------------------------------------------------------------------------------------------------------
+
+#Challenge 1
+
+1.Find out the IP address of ubuntu.com using the host command. 
+	- host ubuntu.com
+
+#Challenge 2
+
+1.Find out the IP address of ubuntu.com using nslookup
+	- nslookup ubuntu.com
+
+#Challenge 3
+
+1.Find out the IP address of wikileaks.org using the dig command.
+	- dig wikileaks.org
+	- dig -t a wikileaks.org
+
+#Challenge 4
+
+1.Find out the authoritative nameservers (ns) of wikileaks.org
+	- dig +short NS wikileal.org
+	- dig -t ns wikileak.org
+
+#Challenge 5
+
+1.Find out the IP address of one of the authoritative nameservers of parrotsec.org
+	- dig -t ns parrotsec.org
+	- dig -t a pola.ns.cloudflare.com.
+
+#Challenge 6
+
+1.Find out the authoritative nameservers (ns) of kali.org from the DNS server with IP address 1.1.1.1
+	- dig -t ns @1.1.1.1 kali.org
+	- dig +short NS @1.1.1.1 kali.org
+
+#Challenge 7
+
+1.You've just acquired the ilovelinux.tk domain and want to host it on your own DNS server.
+ What should you add to /etc/bind/named.conf.local so that your name server will be authoritative for the domain?
+	- zone "ilovelinux.tk"{
+	  type master;
+	  file "/etc/bind/ilovelinux.tk.db";
+	  };
+
+#Challenge 8
+
+1.Create an example of a zone file for the ilovelinux.tk domain.
+	- $TTL 360
+	  @ 		SOA     ns1.ilovelinux.tk.     admin.ilovelinux.tk. (
+         	 6 
+          	 3h 
+         	 5m
+          	 1w
+          	 1h
+          ) 
+		 	 NS          ns1.ilovelinux.tk.
+	  ns1		 A	        167.172.182.44
+ 	  ilovelinux.tk. A	167.172.182.44
+	  www             CNAME   ilovelinux.tk.
+
+#Challenge 9
+
+1.Add a subdomain named admin of the ilovelinux.tk domain
+2.The subdomain will translate to 198.145.29.83
+	- admin     A       198.145.29.83      'added in the end of the arq'
+
+
+
+
+
+
+
+
+
+
+

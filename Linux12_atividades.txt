@@ -1,0 +1,91 @@
+#Challeng 1
+
+1.Suppose you connect frequently to a server located in a remote data center by running: ssh -l u123h -p 9956 191.169.0.1
+  Create an alias named main for the command and make it persistent after reboot.
+
+	- vim ~/.bashre    'adc na ultima linha cmd abaixo'
+	- alias comandoip='ssh -l micael -p 2226 192.168.1.146
+
+
+#Challenge 2
+
+1.Create a Bash script named script1.sh. Add the shebang.
+  Define a variable called country that holds the country you are living in.
+  Print the message: You live in YOUR_COUNTRY.
+  Run the script in different ways.
+
+	- vim script1.sh
+	- #!/bin/bahs
+	  coutry='Italy'
+	  echo 'You live in $coutry'
+	- ./script1
+	- source script1
+
+
+#Challenge 3
+
+1.Create a script and define two string variables.
+  Add a commented line after the shebang and another inline comment.
+  Create a new variable by concatenating the two string variables.
+  Run the script.
+
+	- vim script2.sh
+		#!/bin/bash
+		#Declarando primeira string
+		str1="Hello"
+		#Declarando segunda string
+		str2="World of Linux."
+		nw="$str1 $str2"
+		echo "$nw"
+	-./script2.sh
+
+
+#Challenge 4
+
+1.Develop a Bash script that creates a new group and a new username. The group will be the user’s secondary group.
+  The username and the group will be given as input by the user that runs the script.
+  The script will also display the last 2 lines from the files where the users and the groups are saved in Linux.
+  Test the script by running it as root.
+	
+	- vim script3.sh
+		-#!/bin/bash
+		#Automatizando a criação de usuario e grupo
+		read -p "Name of the user: " username
+		read -p "Name of the group: " groupname
+		sudo useradd -m -d /home/"$username" "$username"
+		sleep 1
+		sudo groupadd "$groupname"
+		sudo usermod -aG "$groupadd" "$username"
+		sleep 1
+		tail -n 2 /etc/passwd
+		echo #################
+		tail -n 2 /etc/group
+
+
+#Challenge 5
+
+1.Create a script called fix_permissions.sh that prompts the user for a directory and 
+  changes the permissions of all subdirectories to 755 and to all files to 644 recursively.
+
+	- vim script4.sh
+		-#!/bin/bash
+		#Atutomatizando permissões para file e directory
+		read -p "Enter name directory :" dir
+		ehco -n "Changing files permissions to 664 recursively..."
+		fid $dir -type f -exec chmod 644 {} \;
+		echo "Done."
+
+		echo -n "Changing subdirectories permissions to 755 recursively..."
+		fid $dir -type d -exec chmod 755 {} \;
+		ehco "Done"
+
+
+
+		
+
+
+
+
+
+
+

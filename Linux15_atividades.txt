@@ -1,0 +1,90 @@
+#Challenge 1
+
+1.Create a function called now that prints out the current date and type in the format: YYYY-MM-DD HH:MM:SS
+  Call the function.
+
+	- !#/bin/bash
+	  data_time (){
+	  echo "Time is $(date +%Y\ %r)"
+	  }
+	  data_time
+
+
+#Gallenge 2
+
+1.Create a function called rectangle_area that takes 2 arguments:  width and height.
+  The function computes and prints out the area of the rectangle.
+
+	- #!/bin/bash
+	  read -p "Length: " len
+	  read -p "Width: " wid
+	  rectangle_area (){
+	  	are=$((len*wid))
+	  	echo "Area is $are"
+	  }
+	  rectangle_area
+
+
+#Challenge 3
+
+1.Create a Bash Menu with the following entries:
+  Display Date and Time
+  List users logged in
+  Display disk usage
+  Change the Menu Prompt to the string Choose:
+  Implement each entry in the menu using the if...elif..else statements.
+
+	- #!/bin/bash
+	  PS3="Choose:"
+	  select MENUITEM in "Display date and time" "List users logged in" "Display disk usage" "Quit"
+	  do
+		if [[ $REPLY -eq 1 ]]
+		then
+			date
+		elif [[ $REPLY -eq 2 ]]
+		then
+			who -aH
+		elif [[ $REPLY -eq 3 ]]
+		then
+			df -h
+		elif [[ $REPLY -eq 4 ]]
+		then
+			echo "Quitting ..."
+			sleep 1
+			exit
+		else	
+			echo "Unknown selection."
+		fi
+	  done
+
+
+#Challenge 4
+
+1.Change the solution from the previous challenge so that you use case instead of if...elif..else to implement the menu entries.
+
+	- #!/bin/bash
+	  PS3="Choose:"
+	  select MENUITEM in "Display Date and Time" "List users logged in" "Display disk usage" "Quit"
+	  do
+		case $REPLY in
+			1)
+				date
+				;;
+			2)
+				who -aH
+				;;
+			3)
+				df -h
+				;;
+			4)
+
+				echo "Quitting ..."
+				sleep 1
+				exit
+				;;
+			*)
+				echo "Unknown selection."
+				;;
+		esac
+	  done
+

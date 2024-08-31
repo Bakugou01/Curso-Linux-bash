@@ -1,0 +1,75 @@
+#Challenge 1
+
+1.Create a new user using the useradd command with no other options. Check if the home directory of the user was created as well.
+	- sudo useradd luffy
+	- ls /home/
+
+2.Set a password for the user.
+	- sudo passwd luffy
+	- criar password
+
+3.Log in as the new user (in a terminal or GUI).
+	- su luffy
+	- id
+
+
+#Challenge 2
+
+1.Create a new user using the useradd specifying the following: the home directory (which will be created as well), the Bash shell, and a comment.
+	- sudo useradd -m -d /home/luffy -c 'luffy@onepiece.com' luffy
+
+2.Set a password for the user.
+	- sudo passwd luffy
+	
+3.Create a new group using the groupadd command and then add the user to the newly created group.
+	- groupadd one_piece 
+	- useradd -aG one_piece luffy
+
+4.Check the groups to which the user belongs.
+	- su luffy
+	- groups
+
+
+#Challenge 3
+
+1. Try to execute a command as root (like say sudo cat /etc/shadow or sudo ls -l /root). 
+  Run the command as the user you created at the previous challenge. Notice what will happen.
+	- sudo cat /etc/shadow 'work'
+	- su luffy
+	- sudo cat /etc/shadow 'luffy não tem permição'
+
+2. Make this user an admin one and rerun the command as root.
+	- sudo usermod -aG sudo luffy
+	- sudo cat /etc/shadow 'funcionou pq agora é sudo'
+
+
+#Challenge 4
+
+1. Create the groups and the users (including their home directory)  created in the previous challenges.
+		
+
+
+#Challenge 5
+
+1.Remove the groups and the users (including their home directory)  created in the previous challenges.
+	- sudo groupdel anime
+	- sudo groupdel shounem
+	- sudo userdel -r luffy
+
+
+#Challenge 6
+
+1. Understand the concept of salt used in Linux passwords. Create 2 new users and set the same password for both of them.
+   Check that the save password in /etc/shadow is different for each user.
+	- sudo useradd user1
+	- sudo useradd user2
+	- sudo passwd user1
+	- sudo passwd user2
+	- sudo tail -n2 /etc/shadow 'criptografia das senhas total diferente'
+
+
+
+
+
+
+

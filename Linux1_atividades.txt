@@ -1,0 +1,228 @@
+Atividades linux
+
+
+- Challenge #1
+
+
+1. Move into the current user’s home directory using the cd command
+	- cd ~
+
+2.List the contents of /etc using the ls command and an absolute path
+	- ls /etc/
+
+3.Display the contents of /var/log/dmesg using the cat command and an
+	- cat /var/log/dmesg
+
+4.Move into the root directory (/) using an absolute path.
+	- cd /
+
+5.List the contents of /etc using the ls command and an absolute path.
+	- ls /etc/
+
+
+- Challenge #2
+
+
+1. Move into the current user’s home directory using the cd command and an absolute path.
+	- cd/home/micael/
+	-pwd
+
+2. List the contents of the current directory using the ls command and a relative path.
+	- ls .
+
+3. List the contents of /home using the ls command and an absolute path
+	- ls /home/
+
+4. List the contents of /home using the ls command and a relative path.
+	- ls ..
+
+5. List the contents of /etc using the ls command and an absolute path.
+	- ls /etc/
+
+6. List the contents of /etc using the ls command and a relative path.
+	- ls ../../etc/
+
+7. Display the contents of /var/log/dmesg using the cat command and an absolute path.
+	- cat /var/log/dmesg
+
+8. Display the contents of /var/log/dmesg using the cat command and a relative path.
+	- cat ../../var/log/dmesg
+
+- Challenge #3
+
+
+1.Move into the root directory (/) using the cd command and an absolute path.
+	- cd /
+
+2.Display the contents of /var/log/boot.log using the cat command and a relative path.
+	- cat var/log/boot.log
+
+3.Run the previous command as root.
+	- sudo cat var/log/boot.log
+
+4.Move to /var/log directory using an absolute path.
+	- cd /var/log
+
+5.Display the contents of the Desktop directory using both an absolute and relative path.
+	- ls /home/micael/Desktop/
+	- ls ~/Desktop/
+	- ls ../../home/micael/Desktop/
+
+
+- Challenge #4
+
+
+1. Display the man page of ls and search for -d option.
+	- man ls
+	- /-d   ''n' para mover entre opções'
+
+2. Display the contents of /var/log using a long listing format.
+	- ls -l /var/log
+
+3. Display information about the /var/log directory in a long listing format.
+	- ls -ld /var/log
+
+4. Display the contents of /etc on a single column.
+	- ls -1 /etc/
+
+5. Display all the files and directories (including hidden ones) from the user's home directory.
+	- ls -la ~
+
+
+- Challenge #5
+
+
+1. Display the contents of /var/log sorted by size in a human-readable format.
+	- ls -lSh /var/log/
+
+2. Rerun the previous command adding an option that omits the files that end in .log from listing.
+	- ls -lSh --hiden=*log. /var/log/
+	- também posso adicionar *log* para todos os 'logs'
+
+3. List the contents of /etc recursively.
+	- ls -lR /etc/
+
+
+- Challenge #6
+
+
+1. Create a new file called linux.txt in the user’s home directory using the touch command.
+	- touch linux.txt
+
+2. Notice the file timestamps using both stat and ls commands.
+	- stat linux.txt
+	- ls -l linux.txt
+
+3. Display the entire timestamp of the file using the ls command.
+	- ls -lu linux.txt
+	- ls -lc linux.txt
+	- ls -l --full-time linux.txt
+
+
+- Challenge #7
+
+
+1. Consider the file created in the previous challenge. Notice its timestamps and then update them to the system’s current date and time.
+	- stat linux.txt
+	- touch linux.txt (subscrevi para alterar a data para o agora)
+	- stat linux.txt
+
+2. Change only the modification and change time to the current system time. See the change.
+	- touch -m linux.txt
+	- stat linux.txt
+
+3. Change only the modification time manually to 1990, January 15, 10:30:55 AM.
+	- touch -m -t 199001151030.55 linux.txt
+	- stat linux.txt
+
+
+- Challenge #8
+
+1. Consider the file called linux.txt created in the previous challenge. Notice its timestamps and then update them to the values of /etc/passwd. See the changes.
+	- touch -r /etc/passwd linux.txt
+	- stat linux.txt
+
+- Challenge #9
+
+1. List the contents of /var/log/dmesg using the cat command and displaying the line numbers as well.
+	- cat -n /var/log/dmsg
+
+
+- Challenge #10
+
+1. Display the contents of /etc/ssh/ssh_config page by page using less.
+	- less /etc/ssh/ssh_config
+
+2.Go to the end and then to the beginning of the file using the right shortcuts.
+	- 'G' and 'g'
+
+3.Search forward for the string Ciphers 
+	- /Ciphers
+
+4.Quit less
+	- 'q'
+
+
+- Challenge #11
+
+1. Display the first 3 lines of /etc/passwd
+	- head -n 3 /etc/passwd
+
+2.Display the last 5 lines of /etc/shadow
+	- sudo tail -n -5 /etc/shadow
+
+3.Display the contents of /etc/group starting with line 5
+	- tail -n +5 /etc/group
+
+
+- Challenge #12
+
+1.Display the last 12 lines of /var/log/auth.log in real-time.
+	- sudo tail -n 10 -f /var/log/auth.log
+
+2.Become root in another terminal and notice how the display is automatically updated.
+	- 'logue com em outro teminal e veja na outra tela em tempo real
+
+
+- Challenge #13
+
+1. Display the contents of the user’s home directory repeatedly every 2 seconds.
+	- watch -d -n 2 ls
+
+2. Create a new file in the user's home directory and notice the differences between the refreshes.
+	- touch zfile.txt 'criando aquivo aleatorio'
+	- 'ver a atualizão em tempo real'
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

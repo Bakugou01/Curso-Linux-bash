@@ -1,0 +1,29 @@
+#Challenge 1
+
+1. Craindo, movendo, modificando e excluindo arquivos
+	-mkdir, touch, cp, mv
+
+2. Podendo usar o man para imergir mais
+	- man touch
+
+
+#Challenge 2
+
+1.Create a file named users.txt by redirecting the output of the who command.
+	- who > users.txt
+
+2.Remove the file in a secure manner by overwriting the file 50 times before removing it
+	- shred -vu -n 50 users.txt
+
+
+#Challenge 3
+
+1.Remove the entire directory structure without prompting.
+	- rm -rf linux
+	- 'importande por 'i' para prompd, ver oque está removendo'
+
+
+
+
+
+

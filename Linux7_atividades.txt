@@ -1,0 +1,104 @@
+#Challenge 1
+
+1. List all running processes.
+	- ps aux
+
+2.Check if a process named bash is running (use both ps and pgrep).
+	- ps -ef | grep bash
+	- pgrep -l bash
+
+
+#Challenge 2
+
+1.Using the ps command list all processes sorted by memory in reverse order.
+	- ps aux --sort=-%mem | less
+
+2.Redirect the output to a file called processes.txt
+	- ps aux --sort=-%mem > processes.txt
+
+
+#Challenge 3
+
+1.Start top, sort processes by CPU and highlight the running processes and the sorting column.
+	- top
+	- 'z', 'b' and 'c' and '<>' para movimentar
+
+#Chellange 4
+
+1.Generate a text file that contains 3 runs (refreshes) of top with a delay of 1second.
+	- top -d 3 -n 3 -b > topsalve.txt
+	- cat topsalvo.txt | less
+
+
+#Challenge 5
+
+1.Install htop and start it.
+	- sudo apk install htop
+	- htop
+
+
+#Challenge 6
+
+1.Using the kill command send the default signal (SIGTERM - 15) to the current terminal.
+	- ps -ef | grep term ('numero id do terminator')
+	- kill 2571
+
+
+#Challenge 7
+
+1.Start a graphical application like gedit or firefox.
+	- open firefox
+
+2.Find its PID and send the SIGINT (2) signal to the application.
+	- pgrep firefox
+	- kill -2 2082 ('id firefox')
+	- kill -SIGINT $(pidof firefox)
+	- kill -2 $(pidof firefox)
+
+
+#Challenge 8
+1.Start a graphical application like gedit from a terminal in the background.
+	- abra bloco de notas gedit
+
+2.Kill the application using pkill.
+	- pkill -e gedit
+	- pkill -e firefox
+
+
+#Challenge 9
+
+1.Run a command that takes some time to complete like ls -lR / in the foreground. After a few seconds stop (pause) the command by pressing Ctrl + Z.
+	- ls -lR /
+	- crtl z 'para parar o processo'
+
+2.Print its JOBID and PID and resume the command in the foreground.
+	- josbs 'para ver os jobs pausados'
+	- fg %1  ' para retornar os processos, numero depende dequantos'
+
+
+#Challenge 10
+
+1.Run sleep 100 in the background.
+	- sleep 30 &
+
+2.Close the terminal, open it again and check if the process is still running.
+	- pgrep sleep
+	- 'nada rodando'
+
+3.If it’s not running, run sleep 100 again making it immune to the closing terminal.
+	- nohup sleep 30 &
+	- pgrep sleep
+	-   'sleep contiua rodando'
+
+
+
+
+
+
+
+
+
+
+
+
+

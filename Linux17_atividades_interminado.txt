@@ -1,0 +1,10 @@
+#Challenge 1
+
+1.Install Apache, check that it’s running, and connect to the Web server using the Browser and server’s IP address;
+	- sudo apt install apache2
+	- systemctl status apache2
+	- ip address
+
+#Challenge 2
+
+1.

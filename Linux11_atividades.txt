@@ -1,0 +1,121 @@
+#Challenge 1
+
+1.For the currently logged-in user, create a cron job that writes the current date and time to a file every 3 minutes.
+	- crontab -e
+	- */1 * * * * date >> ~/time.txt         ' no Vim'
+
+
+#Challenge 2
+
+1. Create a cron job that runs as root and fully upgrades the system every Sunday at 5:10 AM
+	- sudo crontab -e
+	- 10 5 * * 7 tar -zcf /var/backups/home.tgz /home/      'no Vim'
+
+
+#Challenge 3
+
+1. Identify the partition where the root file system (/) is mounted. 
+	- df -h
+
+2. Create a directory on the Desktop and mount that partition there as well.
+	- mkdir new_dir
+	- sudo mount /dev/sda3/ ~/Desktop/new_dir
+
+
+#Challenge 4
+
+1.Consider this iso file.
+  Mount it to a directory in the user's home directory.
+	- ls -l slide.iso
+	- isoinfo -l -i slides.iso
+	- mkadir iso
+	- sudo mount slides.iso iso/ -o loop
+
+
+#Challenge 5
+
+1. Install the nginx web server.
+	- sudo apt install nginx
+
+2. Check that it’s running.
+	- systemctl status nginx
+
+3. Set the server NOT to start automatically when the computer boots up.
+	- systemctl is-enabled nginx
+	- sudo systemctl disable nginx         'enable para ativar'
+
+
+#Challenge 6
+
+1.Generate an HTML file that contains complete hardware information.
+	- sudo su
+	- lswh -html > cpu.html
+
+
+#Challenge 7
+
+'OBS melhor e uma maquina que roda linux instalada'
+
+1.Find out what is the maximum RAM memory that can be installed on the system.
+	- sudo su
+	- dmidecode -t memory
+
+2.Find out the amount of RAM memory that is already installed on the system.
+	- dmidecode -t | grep -i max
+	- dmidecode -t | grep -i size
+
+3.Display the amount of RAM memory that is free and used (by the running system).
+	- free -m
+
+
+#Challenge 8
+
+1.Display as much information as possible about the WiFi card.
+	- sudo su
+	- lshw -C network
+	- iw list less
+	- lspci | grep -i wireless
+	- ls -l /proc/net/wireless
+	- cat /proc/net/wireless
+	- ifconfig
+
+
+#Challenge 9
+
+1. Display as much information as possible about the hard disks.
+	- lsblk	
+	- fdisk -l
+	- fdisk -l /dev/sda1
+	- lshw -C disk
+	- lshw -C disk -short
+	- hdparm -I /dev/sda
+	- cat /proc/partitions
+
+
+#Challenge 10
+
+1.Benchmark the read speeds performance of the disks installed on your system.
+	- lsblk
+	- hdparm -tT --dierect /dev/sda
+
+
+#Challenge 11
+
+1.On a laptop, run a command that will display information about the battery status.
+	- acpi -bi
+	- acpi -V
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+#Challenge 1
+
+1.Start 2 Linux VMs with the network in bridged mode and check that they are reachable using ping.
+	- ifconfig     'para ver o ip'
+	- ping 192.168.1.83
+
+
+#Challenge 2
+
+1.Install OpenSSH on one Linux VM, check the service status, and then connect to it using the ssh client from the other Linux VM.
+	- sudo apt update && sudo apt install ssh
+	- sudo ssh -p 22 micael@192.168.1.146
+	- sudo ssh -l micael 192.168.1.146
+
+
+#Challenge 3
+
+1. Secure the SSH Daemon:
+  - change the listening Port to 2266
+  - allow only a single non-privileged user to connect to the SSH server.
+  - Disable root login entirely.
+	- sudo vim /etc/ssh/sshd.config
+		Port 2266
+		PemitRootLogin no
+		AllowUsers micael
+
+
+#Challenge 4
+
+1.Create a directory and a file in the user’s home directory.
+	- mkdir mytest     'criado na maquina 1'
+	- ifconfig > ip.txt
+
+2.Using scp, copy both the file and the directory to the remote Linux VM where the SSH daemon is running
+	- scp -r -P 2266 mytest/ micael@192.168.1.146:~      'sincronizando da maquina 1 para maquina 2 qual roda servidor'
+	- ls mytest      'maquina 2'
+
+
+#Challenge 5
+
+1.Using scp, copy a file from the remote VM where the SSH daemon is running to the local machine, in the current directory.
+	- scp -r -P 2266 micael@192.168.1.146:~/mytest  ~
+	- scp -P 2266 micael@192.168.1.146:/etc/hosts .          'pegando qualquer pasta da M2 servidor para M1'
+
+
+#Challenge 6
+
+1.Solve the last 2 challenges using rsync instead of scp.
+	- rsync -av -e 'ssh -p 2266' mytest/ micael@192.168.1.146:~/mytest       'para enviar sincronização'
+	- rsync -av -e 'ssh -p 2266' micael@192.168.1.146:~/mytest .
+	
+	- rsync -av -e 'ssh -p 2266' --delete micael@192.168.1.146:~/mytest      ' --delete para sincronizar com aquivos deletados'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

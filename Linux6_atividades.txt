@@ -1,0 +1,103 @@
+#Challenge 1
+
+1.Display the permissions of ubuntu.txt
+	- ls -l linux.txt
+
+2.Remove all permissions of others. 
+	- sudo chmod 660 linux.txt
+
+
+#Challenge 2
+
+1.Remove the read permission of ubuntu.txt for the owner and check if the owner can read the file.
+	- sudo chmod 240 ubunto.txt
+	- cat ubunto.txt (permission denied)
+
+
+#Challenge 3
+
+1.Using the octal notation, set the permissions of the directory to rwxrwx--- and of the file to rw-r-----
+	- chmod 770 mydir/
+	- ls -ld mydir
+	- chmod 640 mydir/linux.txt
+	- ls -l mydir/linux.txt
+
+
+#Challenge 4
+
+1.Set the permissions of the directory to 0667. Check if the user (owner) can list its contents, move to the directory and remove it.
+	- chmod 0667 mydir/
+	- ls mydir/ (permission denied)
+	- cd mydir/ (permission denied)
+	- rm -rf mydir/ (permission denied)
+
+
+#Challenge 5
+
+1.Set the permissions of all the files in the user's home directory to 0640 and the permissions of all directories to 0750.
+	- find ~ -type d -exec chmod 0755 {} \;
+	- find ~ -type f -exec chmod 0640 {} \;
+	- ls -l ~
+
+
+#Challenge 6
+
+1.As a non-privileged user list the contents of /root using the ls command. See what will happen.
+	- ls /root/ (permission denied)
+
+2.As root set SUID to ls and list the contents of /root again as a non-privileged user.
+	- which ls
+	- ls -l /usr/bin/ls
+	- sudo chmod 4755 /urs/bin/ls
+	- ls -l /usr/bin/ls
+	- ls -al /root/
+
+3.Check the SUID permission set on ls
+	- id
+	- ls -l /usr/bin/ls
+	
+4.As root remove the SUID bit.
+	- sudo chmod 0755 /usr/bin/ls
+
+
+#Challenge 7
+
+1.Set the directory permissions to 0777 and the file permissions to 0000. As another non-privileged user, try to remove the file.
+	- chmod 0777 mydir/
+	- chmod 0000 mydir/linux.txt
+   thor - rm -rf mydir/linux.txt (foi deletado)
+
+2.Create a new file in the directory and set its permissions to 0644.
+	- touch mydir/linux.txt
+	- chmod 0644 mydir/linux.txt
+
+3.Set the Sticky Bit on the directory.
+	- chmod 1777 mydir/
+
+4.As another non-privileged user, try to remove the file.
+	- su thor
+   thor - rm -rf mydir/linux.txt (permission denied)
+
+
+#Challenge 8
+
+1.Change the owner and the group owner of all files in the current user home directory to the current user and its primary group.
+	- sudo chown -R micael:micael ~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

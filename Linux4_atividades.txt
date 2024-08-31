@@ -1,0 +1,47 @@
+#Challenge 1
+
+1. Check if locate is installed. Install it if necessary.
+	- locate
+	- sudo apt mlocate
+
+2.Create a new file and search for it using locate.
+	- ls > pth.txt
+	- locate pth.txt
+
+3.Update the database used by locate and search for the file again.
+	- sudo updatedb
+	- locate pth.txt
+
+
+
+#Challenge 2
+
+1.Find all regular files in /var that have a size bigger than 2 MB.
+	- sudo find /var/ -type f -size +2M
+
+2.Find all regular files in /etc that have been modified in the last hour.
+	- sudo find /etc/ -type f -mmin -60
+
+3.Execute cat on each found file.
+	- sudo find /etc/ -type f -mmin -60 -exec cat{} \;
+
+4.Create a new directory and copy all found files in that directory (backup).
+	- mkdir encontrados
+	- sudo find /etc/ -type f -mmin -60 -exec cp{} encontrados/ \;
+
+
+#Challenge 3
+
+1. Find all regular files in /var that are not owned by root.
+	- sudo find /var/ type -f -not -user root
+	- sudo find /var/ type -f -not -user root -ls
+
+2.Create a directory and a new file in it.
+	- mkdir mydir2
+	- touch /mydir2/mythings.txt
+
+3.Find all files that have the change time in the last minute in the newly created directory and delete them automatically.
+	- find /mydir2/ -type f -cmin -2
+	- find /mydir2/ -type f -cmin -2 -delete
+
+
